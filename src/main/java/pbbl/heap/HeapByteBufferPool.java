@@ -26,11 +26,26 @@ package pbbl.heap;
 import java.nio.ByteBuffer;
 import pbbl.ByteBufferPool;
 
+/**
+ * Represents a pool of {@code HeapByteBuffer}s.
+ *
+ * @author Jacob G.
+ * @since February 23, 2019
+ */
 public final class HeapByteBufferPool extends ByteBufferPool {
     
     @Override
     protected ByteBuffer create(int n) {
         return ByteBuffer.allocate(n);
+    }
+    
+    @Override
+    public void give(ByteBuffer buffer) {
+        if (buffer.isDirect()) {
+            throw new IllegalArgumentException("A DirectByteBuffer cannot be given to a HeapByteBufferPool!");
+        }
+        
+        super.give(buffer);
     }
     
 }

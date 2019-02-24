@@ -26,11 +26,26 @@ package pbbl.direct;
 import java.nio.ByteBuffer;
 import pbbl.ByteBufferPool;
 
+/**
+ * Represents a pool of {@code DirectByteBuffer}s.
+ *
+ * @author Jacob G.
+ * @since February 23, 2019
+ */
 public final class DirectByteBufferPool extends ByteBufferPool {
     
     @Override
     protected ByteBuffer create(int n) {
         return ByteBuffer.allocateDirect(n);
+    }
+    
+    @Override
+    public void give(ByteBuffer buffer) {
+        if (!buffer.isDirect()) {
+            throw new IllegalArgumentException("A HeapByteBuffer cannot be given to a DirectByteBufferPool!");
+        }
+        
+        super.give(buffer);
     }
     
 }

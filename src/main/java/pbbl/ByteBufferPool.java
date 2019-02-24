@@ -29,8 +29,6 @@ import java.util.Deque;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 import java.util.function.Predicate;
-import pbbl.direct.DirectByteBufferPool;
-import pbbl.heap.HeapByteBufferPool;
 
 /**
  * A pool that can contain both {@code HeapByteBuffer}s and {@code DirectByteBuffer}s.
@@ -105,14 +103,6 @@ public abstract class ByteBufferPool {
      * @param buffer the {@link ByteBuffer} to return to this pool.
      */
     public void give(ByteBuffer buffer) {
-        if (this instanceof DirectByteBufferPool && !buffer.isDirect()) {
-            throw new IllegalArgumentException("A HeapByteBuffer cannot be given to a DirectByteBufferPool!");
-        }
-    
-        if (this instanceof HeapByteBufferPool && buffer.isDirect()) {
-            throw new IllegalArgumentException("A DirectByteBuffer cannot be given to a HeapByteBufferPool!");
-        }
-        
         synchronized (buffers) {
             buffers.computeIfAbsent(buffer.capacity(), $ -> new ArrayDeque<>()).offer(buffer);
         }
