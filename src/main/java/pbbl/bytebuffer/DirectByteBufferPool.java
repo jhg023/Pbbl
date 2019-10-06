@@ -21,10 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pbbl.direct;
+package pbbl.bytebuffer;
 
 import java.nio.ByteBuffer;
-import pbbl.ByteBufferPool;
 
 /**
  * Represents a pool of {@code DirectByteBuffer}s.

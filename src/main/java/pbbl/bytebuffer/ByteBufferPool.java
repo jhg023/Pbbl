@@ -21,31 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pbbl.heap;
+package pbbl.bytebuffer;
+
+import pbbl.BufferPool;
 
 import java.nio.ByteBuffer;
-import pbbl.ByteBufferPool;
 
 /**
- * Represents a pool of {@code HeapByteBuffer}s.
+ * Represents a pool of {@link ByteBuffer}s.
  *
- * @author Jacob G.
- * @since February 23, 2019
+ * @author Gergely Sarkozi
+ * @since October 6, 2019
  */
-public final class HeapByteBufferPool extends ByteBufferPool {
-    
-    @Override
-    protected ByteBuffer create(int n) {
-        return ByteBuffer.allocate(n);
-    }
-    
-    @Override
-    public void give(ByteBuffer buffer) {
-        if (buffer.isDirect()) {
-            throw new IllegalArgumentException("A DirectByteBuffer cannot be given to a HeapByteBufferPool!");
-        }
-        
-        super.give(buffer);
-    }
-    
+public abstract class ByteBufferPool extends BufferPool<ByteBuffer> {
+	
+	@Override
+	protected ByteBuffer clearAndLimitBuffer(ByteBuffer buffer, int limit) {
+		return buffer.clear().limit(limit);
+	}
+	
+	@Override
+	protected int bufferCapacity(ByteBuffer buffer) {
+		return buffer.capacity();
+	}
+	
 }
