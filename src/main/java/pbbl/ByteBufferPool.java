@@ -71,7 +71,6 @@ public abstract class ByteBufferPool {
             // If entry is null, there exists no ByteBuffer within the map with a capacity greater than or equal to
             // the value requested. For that reason, one should be created.
             if (entry == null) {
-                buffers.put(n, new ArrayDeque<>(3));
                 return create(n);
             }
             
@@ -104,7 +103,7 @@ public abstract class ByteBufferPool {
      */
     public void give(ByteBuffer buffer) {
         synchronized (buffers) {
-            buffers.computeIfAbsent(buffer.capacity(), $ -> new ArrayDeque<>()).offer(buffer);
+            buffers.computeIfAbsent(buffer.capacity(), $ -> new ArrayDeque<>(3)).offer(buffer);
         }
     }
     
