@@ -1,5 +1,5 @@
 # Pbbl (pr. _pebble_, pɛbəl)
-A thread-safe [ByteBuffer](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/nio/ByteBuffer.html) pool that allows for the automatic reuse of `ByteBuffer` objects, which can be over 30x faster than having to allocate a new `ByteBuffer` when needed.
+A thread-safe buffer pool that allows for the automatic reuse of eg. [ByteBuffer](https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/nio/ByteBuffer.html) objects, which can be over 30x faster than having to allocate a new instance when needed.
 
 # Maven/Gradle Dependency
 Maven:
