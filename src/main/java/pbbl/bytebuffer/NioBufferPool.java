@@ -25,23 +25,24 @@ package pbbl.bytebuffer;
 
 import pbbl.BufferPool;
 
-import java.nio.ByteBuffer;
+import java.nio.Buffer;
 
 /**
- * Represents a pool of {@link ByteBuffer}s.
+ * Represents a pool of {@link Buffer}s.
  *
  * @author Gergely Sarkozi
  * @since October 6, 2019
  */
-public abstract class ByteBufferPool extends BufferPool<ByteBuffer> {
+public abstract class NioBufferPool<T extends Buffer> extends BufferPool<T> {
 	
 	@Override
-	protected ByteBuffer clearAndLimitBuffer(ByteBuffer buffer, int limit) {
-		return buffer.clear().limit(limit);
+	protected T clearAndLimitBuffer(T buffer, int limit) {
+		//noinspection unchecked
+		return (T) buffer.clear().limit(limit);
 	}
 	
 	@Override
-	protected int bufferCapacity(ByteBuffer buffer) {
+	protected int bufferCapacity(T buffer) {
 		return buffer.capacity();
 	}
 	

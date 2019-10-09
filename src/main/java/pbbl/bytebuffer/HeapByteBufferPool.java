@@ -31,7 +31,7 @@ import java.nio.ByteBuffer;
  * @author Jacob G.
  * @since February 23, 2019
  */
-public final class HeapByteBufferPool extends ByteBufferPool {
+public final class HeapByteBufferPool extends NioBufferPool<ByteBuffer> {
     
     @Override
     protected ByteBuffer create(int n) {
