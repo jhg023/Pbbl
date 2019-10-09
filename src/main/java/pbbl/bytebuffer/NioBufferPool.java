@@ -37,8 +37,7 @@ public abstract class NioBufferPool<T extends Buffer> extends BufferPool<T> {
 	
 	@Override
 	protected T clearAndLimitBuffer(T buffer, int limit) {
-		buffer.clear();
-		buffer.limit(limit);
+		buffer.clear().limit(limit);
 		return buffer;
 	}
 	
