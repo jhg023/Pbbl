@@ -37,8 +37,9 @@ public abstract class NioBufferPool<T extends Buffer> extends BufferPool<T> {
 	
 	@Override
 	protected T clearAndLimitBuffer(T buffer, int limit) {
-		//noinspection unchecked
-		return (T) buffer.clear().limit(limit);
+		buffer.clear();
+		buffer.limit(limit);
+		return buffer;
 	}
 	
 	@Override
