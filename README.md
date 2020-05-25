@@ -1,5 +1,5 @@
 # Pbbl (pr. _pebble_, pɛbəl)
-A thread-safe [ByteBuffer](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/nio/ByteBuffer.html) pool that allows for the automatic reuse of `ByteBuffer` objects, which can be over 30x faster than having to allocate a new `ByteBuffer` when needed.
+A thread-safe [Buffer](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/nio/Buffer.html) pool that allows for the automatic reuse of `Buffer` objects (including [`ByteBuffer`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/nio/ByteBuffer.html), [`CharBuffer`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/nio/CharBuffer.html), etc.), which can be over 30x faster than having to allocate a new `Buffer`.
 
 # Maven/Gradle Dependency
  1. Add Pbbl as a dependency using either Maven or Gradle:
