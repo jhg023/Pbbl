@@ -26,7 +26,7 @@ module my.project {
 ```
 
 # Example(s)
-1. Create ByteBufferPool and manually close it:
+1. Create `ByteBufferPool` and manually close it:
 ```java
 // Create a ByteBufferPool (used to pool non-direct ByteBuffer objects).
 var pool = new ByteBufferPool();
@@ -44,7 +44,7 @@ pool.give(buffer);
 // Close the pool when finished.
 pool.close();
 ```
-2. Create DirectFloatBufferPool and automatically close it:
+2. Create `DirectFloatBufferPool` and automatically close it:
 ```java
 // Create a DirectFloatBufferPool (used to pool direct FloatBuffer objects).
 try (var pool = new DirectFloatBufferPool()) {
