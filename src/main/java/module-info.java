@@ -1,5 +1,5 @@
-module Pbbl {
-    exports pbbl;
-    exports pbbl.direct;
-    exports pbbl.heap;
+module com.github.pbbl {
+    exports com.github.pbbl;
+    exports com.github.pbbl.direct;
+    exports com.github.pbbl.heap;
 }
